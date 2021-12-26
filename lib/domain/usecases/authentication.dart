@@ -4,6 +4,12 @@ import '../entities/entities.dart';
 
 abstract class Authentication {
   Future<AccountEntity> auth(
-      {@required String email,
-      @required String password}); // ele vai retornar um token(account entity)
+      AuthenticationParams params); // ele vai retornar um token(account entity)
+}
+
+class AuthenticationParams {
+  final String email;
+  final String secret;
+
+  AuthenticationParams({@required this.email, @required this.secret});
 }
