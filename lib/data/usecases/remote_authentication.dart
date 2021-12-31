@@ -1,3 +1,4 @@
+import 'package:fluttertdd/data/models/remote_account_model.dart';
 import 'package:meta/meta.dart';
 
 import '../../domain/helpers/helpers.dart';
@@ -5,6 +6,7 @@ import '../../domain/entities/entities.dart';
 import '../../domain/usecases/usecases.dart';
 
 import '../http/http.dart';
+import '../models/models.dart';
 
 class RemoteAuthentication {
   final HttpClient httpClient;
@@ -17,7 +19,7 @@ class RemoteAuthentication {
     try {
       final httpResponse =
           await httpClient.request(url: url, method: 'post', body: body);
-      return AccountEntity.fromJson(httpResponse);
+      return RemoteAccountModel.fromJson(httpResponse).toEntity();
     } on HttpError catch (error) {
       //se der HttpError
       throw error == HttpError.unauthorized
