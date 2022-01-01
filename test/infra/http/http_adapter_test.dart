@@ -91,7 +91,13 @@ void main() {
 
       expect(future, throwsA(HttpError.badRequest));
     });
+    test('Should return UnauthorizedError if post returns 401', () async {
+      mockResponse(401);
+      //se for exceção, a gente coloca future, se não, é response
+      final future = await sut.request(url: url, method: 'post');
 
+      expect(future, throwsA(HttpError.unauthorized));
+    });
     test('Should return ServerError if post returns 500', () async {
       mockResponse(500);
       //se for exceção, a gente coloca future, se não, é response
