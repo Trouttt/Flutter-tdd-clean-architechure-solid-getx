@@ -13,7 +13,7 @@
 1. Bad Request - 400 - Válidado
 2. Unauthorized - 401 - Válidado
 3. Forbidden - 403 - Válidado
-4. Not found - 404
+4. Not found - 404 - Válidado
 5. Internal server error - 500 - Válidado
 
 > # Exceção - Status code diferente dos citados acima

@@ -106,6 +106,13 @@ void main() {
 
       expect(future, throwsA(HttpError.forbidden));
     });
+    test('Should return NotFoundError if post returns 404', () async {
+      mockResponse(404);
+      //se for exceção, a gente coloca future, se não, é response
+      final future = await sut.request(url: url, method: 'post');
+
+      expect(future, throwsA(HttpError.notFound));
+    });
     test('Should return ServerError if post returns 500', () async {
       mockResponse(500);
       //se for exceção, a gente coloca future, se não, é response
