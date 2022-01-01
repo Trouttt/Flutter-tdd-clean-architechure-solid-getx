@@ -1,3 +1,5 @@
+// ignore_for_file: missing_return
+
 import 'dart:convert';
 
 import 'package:http/http.dart';
@@ -23,9 +25,12 @@ class HttpAdapter implements HttpClient {
   }
 
   Map _handleResponse(Response response) {
-    if (response.statusCode == 200)
+    if (response.statusCode == 200) {
       return response.body.isEmpty ? null : jsonDecode(response.body);
-    else
+    } else if (response.statusCode == 204) {
       return null;
+    } else {
+      throw HttpError.badRequest;
+    }
   }
 }

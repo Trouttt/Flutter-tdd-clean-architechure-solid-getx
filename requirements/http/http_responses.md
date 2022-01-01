@@ -10,7 +10,7 @@
 
 > # Erros
 
-1. Bad Request - 400
+1. Bad Request - 400 - Válidado
 2. Unauthorized - 401
 3. Forbidden - 403
 4. Not found - 404
