@@ -9,6 +9,7 @@
     {
         "name": "Flutter",
         "request": "launch",
+        "program": "lib/main/main.dart",
         "type": "dart"
     }
     ]

@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:meta/meta.dart';
 
 import 'package:fluttertdd/domain/helpers/helpers.dart';
 import 'package:fluttertdd/domain/usecases/authentication.dart';
