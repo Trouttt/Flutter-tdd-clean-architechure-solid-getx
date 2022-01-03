@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../pages/pages.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle
+        .light); //deixa os ícones de wifi por exemplo, brancos
+
     const Color primaryColor = Color.fromRGBO(136, 14, 79, 1);
     const Color primaryColorDark = Color.fromRGBO(96, 0, 39, 1);
     const Color primaryColorLight = Color.fromRGBO(188, 71, 123, 1);
