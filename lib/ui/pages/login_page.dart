@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/components.dart';
+
 class LoginPage extends StatelessWidget {
   double width;
   double height;
@@ -11,35 +13,50 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         body: SingleChildScrollView(
             child: Container(
-      decoration: BoxDecoration(color: Colors.grey),
       width: width,
       height: height,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            child: const Image(image: AssetImage('lib/ui/assets/logo.png')),
+          LoginHeader(height: height, width: width),
+          const Headline1(
+            text: 'Login',
           ),
-          Text('Login'.toUpperCase()),
-          Form(
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Email', icon: Icon(Icons.email)),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Password', icon: Icon(Icons.lock)),
-                  obscureText: true,
-                ),
-                ElevatedButton(
-                    onPressed: () {}, child: Text('Entrar'.toUpperCase())),
-                TextButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.person),
-                    label: Text('Criar conta'))
-              ],
+          Padding(
+            padding: EdgeInsets.all(width * 0.1),
+            child: Form(
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'Email',
+                        icon: Icon(
+                          Icons.email,
+                          color: Theme.of(context).colorScheme.primaryVariant,
+                        )),
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: height * 0.02, bottom: height * 0.05),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          labelText: 'Password',
+                          icon: Icon(
+                            Icons.lock,
+                            color: Theme.of(context).colorScheme.primaryVariant,
+                          )),
+                      obscureText: true,
+                    ),
+                  ),
+                  ElevatedButton(
+                      onPressed: () {}, child: Text('Entrar'.toUpperCase())),
+                  TextButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.person),
+                      label: Text('Criar conta'))
+                ],
+              ),
             ),
           )
         ],
