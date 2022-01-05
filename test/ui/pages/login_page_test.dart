@@ -4,11 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttertdd/ui/pages/pages.dart';
 
 void main() {
+  Future<void> loadPage(WidgetTester tester) async {
+    final loginPage = MaterialApp(home: LoginPage()); //instancia do componente
+    await tester.pumpWidget(loginPage); //pumpWidget = renderiza o componente
+  }
+
   testWidgets('Should load with correct initial state',
       (WidgetTester tester) async {
     //Testa o estado inicial da tela
-    final loginPage = MaterialApp(home: LoginPage()); //instancia do componente
-    await tester.pumpWidget(loginPage); //pumpWidget = renderiza o componente
+    await loadPage(tester);
 
     final emailTextChildren = find.descendant(
         of: find.bySemanticsLabel('Email'), matching: find.byType(Text));
