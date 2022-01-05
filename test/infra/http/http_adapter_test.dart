@@ -23,7 +23,7 @@ void main() {
 
   group('shared', () {
     test('Should throw serverError if invalid method is provided', () async {
-      final future = await sut.request(url: url, method: 'invalid_method');
+      final future = sut.request(url: url, method: 'invalid_method');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -91,7 +91,7 @@ void main() {
     test('Should return BadRequestError if post returns 400', () async {
       mockResponse(400, body: '');
       //se for exceção, a gente coloca future, se não, é response
-      final future = await sut.request(url: url, method: 'post');
+      final future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.badRequest));
     });
@@ -99,14 +99,14 @@ void main() {
     test('Should return BadRequestError if post returns 400', () async {
       mockResponse(400);
       //se for exceção, a gente coloca future, se não, é response
-      final future = await sut.request(url: url, method: 'post');
+      final future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.badRequest));
     });
     test('Should return UnauthorizedError if post returns 401', () async {
       mockResponse(401);
       //se for exceção, a gente coloca future, se não, é response
-      final future = await sut.request(url: url, method: 'post');
+      final future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.unauthorized));
     });
@@ -114,21 +114,21 @@ void main() {
     test('Should return ForbiddenError if post returns 403', () async {
       mockResponse(403);
       //se for exceção, a gente coloca future, se não, é response
-      final future = await sut.request(url: url, method: 'post');
+      final future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.forbidden));
     });
     test('Should return NotFoundError if post returns 404', () async {
       mockResponse(404);
       //se for exceção, a gente coloca future, se não, é response
-      final future = await sut.request(url: url, method: 'post');
+      final future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.notFound));
     });
     test('Should return ServerError if post returns 500', () async {
       mockResponse(500);
       //se for exceção, a gente coloca future, se não, é response
-      final future = await sut.request(url: url, method: 'post');
+      final future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -136,7 +136,7 @@ void main() {
     test('Should return ServerError if post throws', () async {
       mockError();
       //se for exceção, a gente coloca future, se não, é response
-      final future = await sut.request(url: url, method: 'post');
+      final future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.serverError));
     });

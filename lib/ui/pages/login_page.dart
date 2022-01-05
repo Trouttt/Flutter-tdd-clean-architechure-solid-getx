@@ -13,9 +13,8 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         body: SingleChildScrollView(
             child: Container(
-      width: width,
-      height: height,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           LoginHeader(height: height, width: width),
@@ -26,14 +25,15 @@ class LoginPage extends StatelessWidget {
             padding: EdgeInsets.all(width * 0.1),
             child: Form(
               child: Column(
-                children: [
+                children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: 'Email',
-                        icon: Icon(
-                          Icons.email,
-                          color: Theme.of(context).colorScheme.primaryVariant,
-                        )),
+                      labelText: 'Email',
+                      icon: Icon(
+                        Icons.email,
+                        color: Theme.of(context).colorScheme.primaryVariant,
+                      ),
+                    ),
                     keyboardType: TextInputType.emailAddress,
                   ),
                   Padding(
@@ -41,7 +41,7 @@ class LoginPage extends StatelessWidget {
                         top: height * 0.02, bottom: height * 0.05),
                     child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: 'Password',
+                          labelText: 'Senha',
                           icon: Icon(
                             Icons.lock,
                             color: Theme.of(context).colorScheme.primaryVariant,
@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                      onPressed: () {}, child: Text('Entrar'.toUpperCase())),
+                      onPressed: null, child: Text('Entrar'.toUpperCase())),
                   TextButton.icon(
                       onPressed: () {},
                       icon: Icon(Icons.person),
