@@ -51,6 +51,6 @@ class App extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     primary:
                         primaryColor))), //splash é o efeito ao clickar no botão
-        home: LoginPage());
+        home: LoginPage(null));
   }
 }
