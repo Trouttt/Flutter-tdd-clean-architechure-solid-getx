@@ -7,9 +7,9 @@
 3. Após digitar algo em um campo, a mensagem de erro só deve sumir se o campo for válidado - Válidado
 4. Validar email quando o usuário digitar no campo - Válidado
 5. Mostrar mensagem de erro se o email for inválido - Válidado
-6. Remover mensagem de erro se o email for válido
+6. Remover mensagem de erro se o email for válido - Válidado
 7. Validar senha quando o usuário digitar no campo - Válidado
-8. Mostrar mensagem de erro se a senha for inválida.
+8. Mostrar mensagem de erro se a senha for inválida. - Válidado
 9. Remover mensagem de erro se a senha for válida.
 10. Habilitar o botão de fazer login se todos os campos forem válidos.
 11. Desabilitar o botão de fazer login se todos os campos forem inválidos.
