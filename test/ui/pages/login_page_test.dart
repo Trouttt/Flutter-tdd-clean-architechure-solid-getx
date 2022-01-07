@@ -74,4 +74,34 @@ void main() {
 
     expect(find.text('any error'), findsOneWidget);
   });
+
+  testWidgets('Should present no error if email is valid',
+      (WidgetTester tester) async {
+    await loadPage(tester);
+
+    emailErrorController.add(null);
+    await tester.pump(); //é necessário dar um reload na tela
+
+    final emailTextChildren = find.descendant(
+        of: find.bySemanticsLabel('Email'), matching: find.byType(Text));
+    // ele vai pegar o textFormfield q tem o label ''Email'' e vai ver os campos do tipo text
+    expect(emailTextChildren, findsOneWidget,
+        reason:
+            'when a TextFormField has only one text child, means it has no errors, since one of the childs is always the label text');
+  });
+
+  testWidgets('Should present no error if email is valid',
+      (WidgetTester tester) async {
+    await loadPage(tester);
+
+    emailErrorController.add('');
+    await tester.pump(); //é necessário dar um reload na tela
+
+    final emailTextChildren = find.descendant(
+        of: find.bySemanticsLabel('Email'), matching: find.byType(Text));
+    // ele vai pegar o textFormfield q tem o label ''Email'' e vai ver os campos do tipo text
+    expect(emailTextChildren, findsOneWidget,
+        reason:
+            'when a TextFormField has only one text child, means it has no errors, since one of the childs is always the label text');
+  });
 }
