@@ -13,15 +13,22 @@ void main() {
   LoginPresenter presenter;
   StreamController<String> emailErrorController;
   StreamController<String> passwordErrorController;
+  StreamController<bool> isFormValidController;
   Future<void> loadPage(WidgetTester tester) async {
     presenter = LoginPresenterSpy();
     emailErrorController = StreamController<String>();
     passwordErrorController = StreamController<String>();
+    isFormValidController = StreamController<bool>();
+
     when(presenter.emailErrorStream)
         .thenAnswer((_) => emailErrorController.stream); //stream fake
 
     when(presenter.passwordErrorStream)
         .thenAnswer((_) => passwordErrorController.stream); //stream fake
+
+    when(presenter.isFormValidStream)
+        .thenAnswer((_) => isFormValidController.stream); //stream fake
+
     final loginPage =
         MaterialApp(home: LoginPage(presenter)); //instancia do componente
     await tester.pumpWidget(loginPage); //pumpWidget = renderiza o componente
@@ -31,6 +38,7 @@ void main() {
     //executa no final dos testes
     emailErrorController.close();
     passwordErrorController.close();
+    isFormValidController.close();
   });
   testWidgets('Should load with correct initial state',
       (WidgetTester tester) async {
@@ -148,5 +156,16 @@ void main() {
     expect(emailTextChildren, findsOneWidget,
         reason:
             'when a TextFormField has only one text child, means it has no errors, since one of the childs is always the label text');
+  });
+
+  testWidgets('Should enable button if form is valid',
+      (WidgetTester tester) async {
+    await loadPage(tester);
+
+    isFormValidController.add(true);
+    await tester.pump(); //é necessário dar um reload na tela
+
+    final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+    expect(button.onPressed, isNotNull);
   });
 }
