@@ -59,14 +59,17 @@ class LoginPage extends StatelessWidget {
                           return TextFormField(
                             onChanged: presenter.validatePassword,
                             decoration: InputDecoration(
-                                labelText: 'Senha',
-                                icon: Icon(
-                                  Icons.lock,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .primaryVariant,
-                                ),
-                                errorText: snapshot.data),
+                              labelText: 'Senha',
+                              icon: Icon(
+                                Icons.lock,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primaryVariant,
+                              ),
+                              errorText: snapshot.data?.isEmpty == true
+                                  ? null
+                                  : snapshot.data,
+                            ),
                             obscureText: true,
                           );
                         }),
