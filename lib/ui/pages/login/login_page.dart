@@ -39,6 +39,11 @@ class LoginPage extends StatelessWidget {
                       ),
                     ],
                   )); // false no barrierDismissible não deixa fechar o modal clickando fora
+        } else {
+          if (Navigator.canPop(context)) {
+            // verifica se ele pode esconder
+            Navigator.of(context).pop(); //esconde o modal
+          }
         }
       });
       return SingleChildScrollView(
