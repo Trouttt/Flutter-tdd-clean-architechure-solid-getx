@@ -15,6 +15,6 @@
 11. Desabilitar o botão de fazer login se todos os campos forem inválidos. - Válidado
 12. Exibir loading no início da ação de login. - Válidado
 13. Chamar o método de autenticar - Válidado
-14. Exibir mensagem de erro caso o login falhe
+14. Exibir mensagem de erro caso o login falhe - Válidado
 15. Esconder loading no fim da ação de login - Válidado
 16. Fechar streams quando a página for encerrada
