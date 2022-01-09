@@ -179,4 +179,17 @@ void main() {
     final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
     expect(button.onPressed, null);
   });
+
+  testWidgets('Should call authentication on form submit',
+      (WidgetTester tester) async {
+    await loadPage(tester);
+
+    isFormValidController.add(true);
+    await tester.pump();
+    await tester.tap(find.byType(ElevatedButton));
+    await tester.pump();
+
+    verify(presenter.auth()).called(
+        1); //vc quer garantir que o método auth vai ser chamado pelo menos uma vez
+  });
 }
