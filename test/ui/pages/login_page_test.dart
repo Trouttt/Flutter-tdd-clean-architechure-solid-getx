@@ -236,4 +236,12 @@ void main() {
 
     expect(find.text('main error'), findsOneWidget);
   });
+
+  testWidgets('Should close streams on dispose', (WidgetTester tester) async {
+    await loadPage(tester);
+
+    addTearDown(() {
+      verify(presenter.dispose()).called(1); // garantirá que será apenas 1 vez
+    }); // é um código que é executado no final do teste, será chamado quando a página for destruída
+  });
 }
