@@ -14,11 +14,13 @@ void main() {
   StreamController<String> emailErrorController;
   StreamController<String> passwordErrorController;
   StreamController<bool> isFormValidController;
+  StreamController<bool> isLoadingController;
   Future<void> loadPage(WidgetTester tester) async {
     presenter = LoginPresenterSpy();
     emailErrorController = StreamController<String>();
     passwordErrorController = StreamController<String>();
     isFormValidController = StreamController<bool>();
+    isLoadingController = StreamController<bool>();
 
     when(presenter.emailErrorStream)
         .thenAnswer((_) => emailErrorController.stream); //stream fake
@@ -28,6 +30,9 @@ void main() {
 
     when(presenter.isFormValidStream)
         .thenAnswer((_) => isFormValidController.stream); //stream fake
+
+    when(presenter.isLoadingStream)
+        .thenAnswer((_) => isLoadingController.stream); //stream fake
 
     final loginPage =
         MaterialApp(home: LoginPage(presenter)); //instancia do componente
@@ -39,6 +44,7 @@ void main() {
     emailErrorController.close();
     passwordErrorController.close();
     isFormValidController.close();
+    isLoadingController.close();
   });
   testWidgets('Should load with correct initial state',
       (WidgetTester tester) async {
@@ -191,5 +197,14 @@ void main() {
 
     verify(presenter.auth()).called(
         1); //vc quer garantir que o método auth vai ser chamado pelo menos uma vez
+  });
+
+  testWidgets('Should present loading', (WidgetTester tester) async {
+    await loadPage(tester);
+
+    isLoadingController.add(true);
+    await tester.pump();
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 }

@@ -13,7 +13,7 @@
 9. Remover mensagem de erro se a senha for válida. - Válidado
 10. Habilitar o botão de fazer login se todos os campos forem válidos. - Válidado
 11. Desabilitar o botão de fazer login se todos os campos forem inválidos. - Válidado
-12. Exibir loading no início da ação de login
+12. Exibir loading no início da ação de login. - Válidado
 13. Chamar o método de autenticar - Válidado
 14. Exibir mensagem de erro caso o login falhe
 15. Esconder loading no fim da ação de login
